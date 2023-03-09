@@ -28,11 +28,11 @@ public class _02_GuestBook implements ActionListener {
 	JButton viewNames = new JButton();
 
 	public void run() {
-
+		frame.setVisible(true);
 		panel.add(addName);
 		panel.add(viewNames);
 		frame.add(panel);
-		frame.pack();
+		frame.setSize(300, 300);
 		addName.setText("Add Names");
 		viewNames.setText("View Names");
 		viewNames.addActionListener(this);
