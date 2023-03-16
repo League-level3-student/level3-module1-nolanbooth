@@ -18,11 +18,15 @@ public class LongCheapCompetition {
 		double longestCheapBasil = 0;
 		int basilNum = 0;
 		for (int i = 0; i < lcc.theBasils.size(); i++) {
-			System.out.println(lcc.theBasils.get(i).getCheaps().get(i).getLength());	
-			if(lcc.theBasils.get(i).getCheaps().get(i).getLength() > longestCheapBasil) {
+			if(lcc.theBasils.get(i).getCheaps().size() > i) {
+				System.out.println(lcc.theBasils.get(i).getCheaps().get(i).getLength());	
+				if(lcc.theBasils.get(i).getCheaps().get(i).getLength() > longestCheapBasil) {
 					longestCheapBasil = lcc.theBasils.get(i).getCheaps().get(i).getLength();
 					basilNum = i + 1;
 				}
+			}
+			
+			
 			
 		}
 		System.out.println(basilNum + " had the longest cheap");
