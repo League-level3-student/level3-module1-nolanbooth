@@ -65,11 +65,14 @@ public class GameBoard extends JFrame implements ActionListener {
 		ArrayList<Integer> numbers = new ArrayList</* assumes it is Integer with empty <>*/>(Arrays.asList(new Integer[]{1, 2, 3, 4, 5}));
 		Collections.shuffle(numbers);
 		for(int i = 0; i < numbers.size();i++) {
-			System.out.println(numbers.get(i));
+			//System.out.println(numbers.get(i));
 		}
 		
 		Collections.shuffle(cards);
-
+		
+		for(int i = 0; i < cards.size(); i++) {
+			System.out.println(cards.get(i).getValue());
+		}
 		// 5. Initialize the panel variable declared above
 		panel = new JPanel();
 
