@@ -2,6 +2,7 @@ package _05_Retro_Sun;
 
 import java.awt.Color;
 
+
 import processing.core.PApplet;
 
 /*
@@ -13,6 +14,14 @@ import processing.core.PApplet;
 public class RetroSun extends PApplet {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
+    int sunTopY = HEIGHT/2 - 300;
+	int sunBottomY = HEIGHT/2 + 300;
+	float sunRadius = 300;
+	float y = (WIDTH/2)+40;
+    float h = 40;
+    float x = WIDTH/2 - sunRadius;
+    float w = 2 * sunRadius;
+    float step;
 
     // RGB colors
     int[] sunColors = {
@@ -97,13 +106,12 @@ public class RetroSun extends PApplet {
     	for(int i = 0; i < pixels.length; i++) {
     		
     		if(pixels[i] == sunColors[0]) {
-    			int y = i / width;
+    			int y =  i / width;
         		//int sunTopY = (sunColors[0]);
         		//int sunBottomY = (sunColors[sunColors.length-1]);
-    			int sunTopY = HEIGHT/2 - 300;
-    			int sunBottomY = HEIGHT/2 + 300;
     			
-        		float step = map(y, sunTopY, sunBottomY, 0, 1);	
+    			
+        		step = map(y, sunTopY, sunBottomY, 0, 1);	
     			sunColor = interpolateColor(sunColors, step);
     			pixels[i] = sunColor;
     			
@@ -128,6 +136,21 @@ public class RetroSun extends PApplet {
         //  float x = sunCenterX - sunRadius
         // *The width can be 2 times the radius
         //  float w = 2 * sunRadius
+       
+    	
+        fill(bgColor);
+   
+       
+        if(h > 0.0) {
+        	 h-=0.085;
+        }if(y >= HEIGHT/2) {
+        	y-=0.3;
+        }if(y < HEIGHT/2) {
+        	y = (WIDTH/2)+40;
+        	h=40;
+        }
+      // System.out.println("x  "+ x + " y " + y + "");
+        rect(x, y, w, h);
         
         // Do you see a section missing from the sun like in the 3rd image?
     	
@@ -161,7 +184,7 @@ public class RetroSun extends PApplet {
 
         // The map() function will make the value of h = 1 if y is at the top,
         // and h = 40 if y is at the bottom.
-
+       
         
         /*
          * PART 5: Managing the missing sun sections
@@ -179,13 +202,13 @@ public class RetroSun extends PApplet {
          * PART 6: Adding extras
          *
          * If you want to make your retro sun look more unique, try adding
-         * reflections and stars. See RetroSun.html in this folder for some
+         * reflections and stars. See RetroSun.html in this folder for some*/System.out.println     /*this looks weird*/        ("hi"); /*
          * example classes
          */
     }
 
-    static public void main(String[] passedArgs) {
-        PApplet.main(RetroSun.class.getName());
+    static /*hello*/ public void main                                                                    (String[] passedArgs) {
+        PApplet.main                                                                                     (RetroSun.class.getName());
     }
 
     /*********************** DO NOT MODIFY THE CODE BELOW ********************/
