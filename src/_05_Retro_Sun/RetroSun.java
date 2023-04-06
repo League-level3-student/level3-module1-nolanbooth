@@ -1,7 +1,7 @@
 package _05_Retro_Sun;
 
 import java.awt.Color;
-
+import java.util.ArrayList;
 
 import processing.core.PApplet;
 
@@ -17,12 +17,14 @@ public class RetroSun extends PApplet {
     int sunTopY = HEIGHT/2 - 300;
 	int sunBottomY = HEIGHT/2 + 300;
 	float sunRadius = 300;
-	float y = (WIDTH/2)+40;
-    float h = 40;
+	float y = (HEIGHT/2)+150;
+	float subFactor = (float) 0.3;
+	float h = 40;
     float x = WIDTH/2 - sunRadius;
     float w = 2 * sunRadius;
     float step;
-
+    ArrayList<Rectangle> sections = new ArrayList<Rectangle>();
+    
     // RGB colors
     int[] sunColors = {
             color(212, 202, 11), color(214, 198, 30), color(211, 170, 26),
@@ -42,6 +44,15 @@ public class RetroSun extends PApplet {
     public void setup() {
         // 2. Set bgColor as the background color
     	background(bgColor);
+    	
+         for(int i = 0; i < 4; i++) {
+      	   float x = WIDTH/2 - sunRadius;
+      	   float y = (HEIGHT/2)+150 + (i*50);
+      	   float w = 2 * sunRadius;
+      	   float h = 40;
+      	   sections.add(new Rectangle(x, y, w, h));
+      	   
+         }
     }
 
     @Override
@@ -49,7 +60,7 @@ public class RetroSun extends PApplet {
         /*
          * PART 1: Drawing the sun
          */
-
+    	//System.out.println(y);
         // Draw an ellipse for the sun in the center of the window
         // Use fill(sunColors[0]) to make it yellow
         // Use noStroke() to remove the black outline
@@ -138,20 +149,21 @@ public class RetroSun extends PApplet {
         //  float w = 2 * sunRadius
        
     	
-        fill(bgColor);
+        fill(bgColor); //replace with BGcolor
    
        
-        if(h > 0.0) {
-        	 h-=0.085;
-        }if(y >= HEIGHT/2) {
+       if(y >= HEIGHT/2) {
         	y-=0.3;
-        }if(y < HEIGHT/2) {
-        	y = (WIDTH/2)+40;
+        	h = (y-(HEIGHT/2))*subFactor;
+        }
+       
+       if(y < HEIGHT/2) {
+        	y = (HEIGHT/2)+150;
         	h=40;
         }
       // System.out.println("x  "+ x + " y " + y + "");
-        rect(x, y, w, h);
-        
+       // rect(x, y, w, h);
+       //System.out.println(h);
         // Do you see a section missing from the sun like in the 3rd image?
     	
         
@@ -196,19 +208,36 @@ public class RetroSun extends PApplet {
         // code you wrote for the 1 missing sun section.
         // HINT: You can use the Rectangle class defined below to create
         // a list of Rectangles.
-
+    
+        
+      
+       for(int i = 0; i < 4; i++) {
+      rect(sections.get(i).x, sections.get(i).y, sections.get(i).w, sections.get(i).h);
+       }
+       for(int i = 0; i < 4; i++) {
+       if(sections.get(i).y >= HEIGHT/2) {
+        	sections.get(i).y-=0.3;
+        	sections.get(i).h = (sections.get(i).y-(HEIGHT/2))*subFactor;
+        }if(sections.get(i).y < HEIGHT/2) {
+        	sections.get(i).y = 450;
+        }
+     
+       }
         
         /*
          * PART 6: Adding extras
          *
          * If you want to make your retro sun look more unique, try adding
-         * reflections and stars. See RetroSun.html in this folder for some*/System.out.println     /*this looks weird*/        ("hi"); /*
+         * reflections and stars. See RetroSun.html in this folder for some*/ /*
          * example classes
          */
-    }
+        
+        
+        
+    }//END OF DRAW METHOD
 
-    static /*hello*/ public void main                                                                    (String[] passedArgs) {
-        PApplet.main                                                                                     (RetroSun.class.getName());
+    static public void main(String[] passedArgs) {
+        PApplet.main(RetroSun.class.getName());
     }
 
     /*********************** DO NOT MODIFY THE CODE BELOW ********************/
