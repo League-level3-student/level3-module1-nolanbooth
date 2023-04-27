@@ -100,9 +100,7 @@ public class DamageSimulator implements ActionListener {
 			float enemyFullDamage = Float.parseFloat(enemyFullDamageString);
 			System.out.println("Enemy Full Damage Entered: " + enemyFullDamage);
 
-			numbersEntered = { alliedHealth, alliedDamage, alliedProtection, alliedFullHealth, alliedFullDamage,
-					enemyHealth, enemyDamage, enemyProtection, enemyFullHealth, enemyFullDamage };
-
+			
 			Roll(numbersEntered);
 
 			for (int i = 0; i < numbersEntered.length; i++) {

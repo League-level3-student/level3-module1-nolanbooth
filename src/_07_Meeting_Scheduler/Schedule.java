@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class Schedule {
     private HashMap<String, ArrayList<Integer>> weeklyAvailability;
-    
+
     public Schedule() {
         weeklyAvailability = new HashMap<>();
         weeklyAvailability.put("Monday", new ArrayList<Integer>());
@@ -18,14 +18,14 @@ public class Schedule {
         weeklyAvailability.put("Saturday", new ArrayList<Integer>());
         weeklyAvailability.put("Sunday", new ArrayList<Integer>());
     }
-    
+
     /*
      * Use this method in your solution
      */
     public HashMap<String, ArrayList<Integer>> getSchedule(){
         return weeklyAvailability;
     }
-    
+
     public void printSchedule() {
         System.out.println("+---------+----------");
         for( String dayOfWeek : weeklyAvailability.keySet() ) {
@@ -33,10 +33,10 @@ public class Schedule {
         }
         System.out.println("+---------+----------");
     }
-    
+
     public void addAvailability( String day, Integer startTime ){
         String dayOfTheWeek = day;
-        
+
         // Capitalize first letter to match HashMap key entries
         if(dayOfTheWeek.length() > 1) {
             String firstLetter = dayOfTheWeek.substring(0, 1);
@@ -44,13 +44,13 @@ public class Schedule {
 
             dayOfTheWeek = firstLetter.toUpperCase() + remainingLetters.toLowerCase();
         }
-        
+
         if( weeklyAvailability.containsKey(dayOfTheWeek) ) {
             // Valid day of the week
-            
+
             if( startTime >= 0 && startTime<= 23 ) {
                 // Start time is between 0 and 23
-                
+
                 ArrayList<Integer> startTimes = weeklyAvailability.get(dayOfTheWeek);
                 startTimes.add(startTime);
             } else {
