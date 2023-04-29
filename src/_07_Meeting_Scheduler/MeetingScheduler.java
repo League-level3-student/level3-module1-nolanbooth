@@ -23,8 +23,15 @@ public class MeetingScheduler {
      */
 	String person1Avail = "";
 	String person2Avail = "";
+	
+	
     public static Schedule getMutualAvailability(Schedule person1, Schedule person2) {
-    	
+    	for(int i = 0;i < person1.getSchedule().size(); i++) {
+    		if(person1.getSchedule().get("Monday").equals(null)) {
+    			person1.getSchedule().remove("Monday");
+    		}
+    	}
+    	System.out.println(person1.getSchedule());
     	
     	
     	
