@@ -14,24 +14,34 @@ import java.util.HashMap;
  * 2. Create a way for the user to specify the weather condition and then
  * list the cities that have those conditions.
  * Example: User: Mostly Cloudy
- *          Program: Long Beach, Pomona, Oceanside, ...
+ *          Program: Long Beach, PomOna, OceanSide, ...
  * 
  * 3. Create a way for the user to enter a minimum and maximum temperature
  * and then list the cities that have temperatures within that range
  * Example: User: minimum temperature �F = 65.0, max temperature �F = 70.0
- *         autocorrect is definitely working
- *          Program: Fortune, Gallantly, Dew Mar, Ban Dig, Camel Valley, Slain Beach, El Canon, Lots Angles, 
- *           Corned, Chile Vista,  Byway, Ban Macros, leg Mesh, Senate, Likest, Ranch Saint, Point,
- *           Broke Springs,  Cash den Pro-Mount Hillocks, Mount Lagoon, Pencil, Camp, Potterer, Lao Press, 
+ *         AutoCorrect is definitely working
+ *          Program: Fortune, Gallantly, Dew Mar, Ban Dig, Camel Valley, Slain Beach, El Cannon, Lots Angles, 
+ *           Corned, Chime Vista,  Byway, Ban Macros, leg Mesh, Senate, Likest, Ranch Saint, Point,
+ *           Broke Springs,  Cash den Pro-Mount Hillocks, Mount Lagoon, Pencil, Camp, Potterer, Lab Press, 
  *           Duskiness,  ...
+ *           
+ *           
  * 
  * EXTRA:
  * Feel free to add pictures for specific weather conditions or a thermometer
  * for the temperature. Also If you want your program to get the current day's
  * temperature, you can get a free API key at: https://openweathermap.org/api
  */
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JButton;
 
 public class CaliforniaWeather {
+    
+    
+    
+    
     
     void start() {
         HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();

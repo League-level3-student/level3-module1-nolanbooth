@@ -26,7 +26,8 @@ public class MeetingScheduler {
 	static String person2Avail = "";
 	static String day;
 	static String avail = "";
-	static Schedule availability;
+	static Schedule availability = new Schedule();
+
 
 	public static Schedule getMutualAvailability(Schedule person1, Schedule person2) {
 		for (int i = 0; i < 7; i++) {
@@ -51,21 +52,34 @@ public class MeetingScheduler {
 			if (i == 6) {
 				day = "Saturday";
 			}
-			
-			//Plan: Somehow get the availability from the two people, then add it into the same Schedule. If the schedule
-			//already has the time, then add it to the availability thing/ 
-			
 
-			/*if (person1.getSchedule().get(day).size() == 0) {
-				person1.getSchedule().remove(day);
+			// Plan: Somehow get the availability from the two people, then add it into the
+			// same Schedule. If the schedule
+			// already has the time, then add it to the availability thing/
+
+			if (person1.getSchedule().containsKey(day) && person2.getSchedule().containsKey(day)) {
+				
+				for (int j = 0; j < person1.getSchedule().get(day).size(); j++) {
+					for (int k = 0; k < person2.getSchedule().get(day).size(); k++) {
+						System.out.println("P1:  "+person1.getSchedule().get(day).get(j) + "   P2: " + person2.getSchedule().get(day).get(k));
+						if (person1.getSchedule().get(day).get(j) == person2.getSchedule().get(day).get(k)&& !availability.getSchedule().get(day).contains(person2.getSchedule().get(day).get(k).intValue())) {
+							System.out.println(person2.getSchedule().get(day).get(k) + "   day: " + day);
+							
+							availability.addAvailability(day, person2.getSchedule().get(day).get(k).intValue());
+							
+						}
+					}
+
+				}
 			}
-			if (person2.getSchedule().get(day).size() == 0) {
-				person2.getSchedule().remove(day);
-			}
-			*/
+			/*
+			 * if (person1.getSchedule().get(day).size() == 0) {
+			 * person1.getSchedule().remove(day); } if
+			 * (person2.getSchedule().get(day).size() == 0) {
+			 * person2.getSchedule().remove(day); }
+			 */
 			// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 
-			
 		}
 
 		/*
@@ -77,6 +91,6 @@ public class MeetingScheduler {
 		 * System.out.println(person2.getSchedule().get("Monday"));
 		 * System.out.println("- - - - - -");
 		 */
-		return null;
+		return availability;
 	}
 }
