@@ -123,7 +123,7 @@ public class CaliforniaWeather implements ActionListener {
 		
 			
 				for (String city: weatherData.keySet()) {
-					if(weatherData.get(city).weatherSummary.equalsIgnoreCase(weatherName)) {
+					if(weatherData.get(city).weatherSummary.contains(weatherName)) {
 						cities += city + " \n ";
 						//System.out.println(city);
 					}
