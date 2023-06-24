@@ -56,7 +56,7 @@ public class WorldClocks implements ActionListener {
 
 	public WorldClocks() {
 		clockUtil = new ClockUtilities();
-		cities.put("Chicago, US", clockUtil.getTimeZoneFromCityName("Chicago, US"));
+		//cities.put("Chicago, US", clockUtil.getTimeZoneFromCityName("Chicago, US"));
 		cities.put("San Diego, US", clockUtil.getTimeZoneFromCityName("San Diego, US"));
 		// The format for the city must be: city, country (all caps)
 		city = "Chicago, US";
@@ -99,14 +99,14 @@ public class WorldClocks implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == addCity) {
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == addCity) {
 			String citySelect = JOptionPane.showInputDialog("Which city do you want to add? Format: City, Country");
 			cities.put(citySelect, clockUtil.getTimeZoneFromCityName(citySelect));
 			
 
 		} else {
-			
+			/*
 				Calendar c = Calendar.getInstance(timeZone);
 				String militaryTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":"
 						+ c.get(Calendar.SECOND);
@@ -116,11 +116,41 @@ public class WorldClocks implements ActionListener {
 				
 				System.out.println(timeStr);
 				textArea.setText(city + "\n" + dateStr + "\n" + timeStr);
+				*/
+			String superCombination = "";	
+			for(String city : cities.keySet()) {
+				Calendar cc = Calendar.getInstance(cities.get(city));
+				String combinedTime;
+				String combinedDate;
 				
-				for(String city : cities.keySet()) {
-				String combined = city + "\n";
+				String combinedMilitary = cc.get(Calendar.HOUR_OF_DAY)+ ":" + cc.get(Calendar.MINUTE) + ":" 
+						+ cc.get(Calendar.SECOND);
+				String combinedTwelve = " [" + cc.get(Calendar.HOUR) + ":" + cc.get(Calendar.MINUTE) + ":" 
+						+ cc.get(Calendar.SECOND) + "] ";
+				
+				
+				Calendar cal = Calendar.getInstance(cities.get(city));
+				String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
+				String dayOfWeek = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+				combinedDate = dayOfWeek + " " + month + " " + cal.get(Calendar.DAY_OF_MONTH) + " "
+						+ cal.get(Calendar.YEAR);
+				
+				combinedTime = city + ": " +combinedDate + ", " + combinedMilitary + combinedTwelve + "\n";
+				
+				System.out.println(city + ": " + combinedTime);
+				superCombination = superCombination + combinedTime;
+				
+				
+				
 				}
-				frame.pack();
+			
+			
+			
+			
+			textArea.setText(superCombination);	
+			frame.pack();
+				
+				
 			//use forloop to add text to the area
 		}
 	}
